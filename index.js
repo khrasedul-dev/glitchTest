@@ -19,7 +19,6 @@ app.get('/',(req,res)=>{
     res.json({"status": "The bot is working"})
 })
 
-const port = process.env.PORT || 8080
-app.listen(port, ()=>{
+app.listen(5000, ()=>{
     console.log("The bot app is running")
 })
