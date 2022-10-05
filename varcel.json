@@ -1,15 +1,16 @@
 {
     "version": 1,
+    "name":"varceltest",
     "builds": [
         {
-            "src": "./index.js",
+            "src": "index.js",
             "use": "@varcel/node"
         }
     ],
     "routes":[
         {
             "src": "/(.*)",
-            "dest": "/"
+            "dest": "/index.js"
         }
     ]
 }
