@@ -1,4 +1,6 @@
 const {Telegraf} = require('telegraf')
+const express = require('express')
+const app = express()
 
 const bot = new Telegraf(process.env.BOT_TOKEN)
 
@@ -10,9 +12,11 @@ bot.command('test',ctx=>{
     ctx.reply('This is test command')
 })
 
-bot.telegram.setWebhook(`${process.env.BOT_DOMAIN}:8443/${process.env.BOT_TOKEN}`)
-bot.startWebhook(`/${process.env.BOT_TOKEN}`,null,8443)
+app.use(bot.webhookCallback(`/${process.env.BOT_TOKEN}`))
+bot.telegram.setWebhook(`https://glitch-test-rose.vercel.app:8443/${process.env.BOT_TOKEN}`)
 
-bot.launch()
-.then(()=>console.log("Bot started"))
-.catch((e)=>console.log(e))
+
+const port = process.env.PORT || 8080
+app.listen(port, ()=>{
+    console.log("The bot app is running")
+})
