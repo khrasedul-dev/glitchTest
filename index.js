@@ -15,6 +15,9 @@ bot.command('test',ctx=>{
 app.use(bot.webhookCallback(`/${process.env.BOT_TOKEN}`))
 bot.telegram.setWebhook(`https://glitch-test-rose.vercel.app:8443/${process.env.BOT_TOKEN}`)
 
+app.get('/',(req,res)=>{
+    res.json({"status": "The bot is working"})
+})
 
 const port = process.env.PORT || 8080
 app.listen(port, ()=>{
